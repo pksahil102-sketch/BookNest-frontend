@@ -28,7 +28,7 @@ const AddBook = () => {
         formData.append("image", cover); // MUST match backend field name
       }
 
-      await axios.post("http://localhost:8080/api/v1/books", formData, {
+      await axios.post("https://booknest-backend-2hlf.onrender.com/api/v1/books", formData, {
         headers: {"Content-Type": "multipart/form-data"},
       });
 

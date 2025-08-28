@@ -15,7 +15,7 @@ const BookCard = ({book, onStatusChange}) => {
   const handleChange = async (newStatus) => {
     try {
       await axios.patch(
-        `http://localhost:8080/api/v1/books/${book._id}/status`,
+        `https://booknest-backend-2hlf.onrender.com/api/v1/books/${book._id}/status`,
         {
           status: newStatus,
         }
@@ -36,7 +36,7 @@ const BookCard = ({book, onStatusChange}) => {
     <article className="w-full h-auto bg-[#afcce3] text-gray-950 p-6 hover:shadow-lg transition-shadow rounded-lg">
       <Link to={`/books/${book._id}`}>
         <img
-          src={`http://localhost:8080${book.image}`}
+          src={`https://booknest-backend-2hlf.onrender.com${book.image}`}
           alt={book.title}
           className="w-32 h-48 rounded-md object-cover shadow sm:w-full sm:h-auto"
         />

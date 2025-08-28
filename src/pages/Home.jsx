@@ -18,7 +18,7 @@ const HomePage = () => {
     async function getRecentBooks() {
       try {
         setIsLoading(true);
-        const response = await axios.get("http://localhost:8080/api/v1/books");
+        const response = await axios.get("https://booknest-backend-2hlf.onrender.com/api/v1/books");
         setRecentBooks(response.data);
         calculateStats(response.data);
       } catch (error) {

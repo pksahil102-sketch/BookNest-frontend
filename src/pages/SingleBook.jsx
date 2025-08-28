@@ -16,7 +16,7 @@ const SingleBook = () => {
     setStatus(newStatus);
     try {
       await axios.patch(
-        `http://localhost:8080/api/v1/books/${book._id}/status`,
+        `https://booknest-backend-2hlf.onrender.com/api/v1/books/${book._id}/status`,
         {status: newStatus}
       );
 
@@ -43,7 +43,7 @@ const SingleBook = () => {
         try {
           setIsLoading(true);
           const response = await axios.get(
-            `http://localhost:8080/api/v1/books/${id}`
+            `https://booknest-backend-2hlf.onrender.com/api/v1/books/${id}`
           );
           setBook(response.data);
           setStatus(response.data.status || "Status");
@@ -69,7 +69,7 @@ const SingleBook = () => {
   }
   async function deleteBook(id) {
     try {
-      await axios.delete(`http://localhost:8080/api/v1/books/${id}`);
+      await axios.delete(`https://booknest-backend-2hlf.onrender.com/api/v1/books/${id}`);
       navigate("/library");
       toast("Book deleted successfully");
     } catch (error) {
@@ -111,7 +111,7 @@ const SingleBook = () => {
 
             {book.image && (
               <img
-                src={`http://localhost:8080${book.image}`}
+                src={`https://booknest-backend-2hlf.onrender.com${book.image}`}
                 alt={title}
                 className="w-full max-h-96 object-contain  rounded-lg mb-6"
               />

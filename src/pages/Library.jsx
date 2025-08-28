@@ -12,7 +12,7 @@ const Library = () => {
     async function fetchAllBooks() {
       try {
         setIsLoading(true);
-        const response = await axios.get("http://localhost:8080/api/v1/books");
+        const response = await axios.get("https://booknest-backend-2hlf.onrender.com/api/v1/books");
         setAllBooks(response.data);
       } catch (error) {
         console.log(error.message);
