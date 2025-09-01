@@ -5,6 +5,7 @@ import AboutPage from "./pages/About";
 import AddBook from "./pages/AddBook";
 import Library from "./pages/Library";
 import SingleBook from "./pages/SingleBook";
+import EditBook from "./pages/EditBook";
 import {ToastContainer} from "react-toastify";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
             <Route path="/library" element={<Library />} />
             <Route path="/add-book" element={<AddBook />} />
             <Route path="/books/:id" element={<SingleBook />} />
+            <Route path="/books/:id/edit" element={<EditBook />} />
           </Routes>
         </div>
         <ToastContainer />

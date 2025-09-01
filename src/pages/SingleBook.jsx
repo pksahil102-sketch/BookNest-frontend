@@ -4,6 +4,7 @@ import {useParams, useNavigate, Link} from "react-router";
 import axios from "axios";
 import {ArrowLeft} from "lucide-react";
 import Dropdown from "../components/Dropdown";
+import NotesSection from "../components/NotesSection";
 import {toast} from "react-toastify";
 
 const SingleBook = () => {
@@ -67,9 +68,12 @@ const SingleBook = () => {
       </div>
     );
   }
+
   async function deleteBook(id) {
     try {
-      await axios.delete(`https://booknest-backend-2hlf.onrender.com/api/v1/books/${id}`);
+      await axios.delete(
+        `https://booknest-backend-2hlf.onrender.com/api/v1/books/${id}`
+      );
       navigate("/library");
       toast("Book deleted successfully");
     } catch (error) {
@@ -96,7 +100,11 @@ const SingleBook = () => {
   }
   const {title, _id, author, genre, createdAt} = book;
   return (
-    <main>
+    <main className="space-y-4">
+      {/* Notes section */}
+      <div className="ml-48 bg-white py-2 px-4 rounded-lg h-auto shadow-md">
+        <NotesSection bookId={book._id} />
+      </div>
       <div className=" ml-48 max-w-4xl ">
         <div className="bg-white rounded-lg shadow-md hover:shadow-lg p-8 relative">
           {/* header */}
@@ -125,14 +133,24 @@ const SingleBook = () => {
               <div>
                 <span className="text-2xl text-gray-900">By {author}</span>
               </div>
-              <button
-                className="bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-700 transition-colors"
-                onClick={() => {
-                  deleteBook(_id);
-                }}
-              >
-                Delete Book
-              </button>
+              <div className="flex justify-center items-center gap-4">
+                {/* Update Button */}
+                <Link
+                  to={`/books/${book._id}/edit`}
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800"
+                >
+                  Edit Book
+                </Link>
+                {/* Delete Button */}
+                <button
+                  className="bg-red-600 text-white px-4 py-2 rounded-lg cursor-pointer text-sm font-semibold hover:bg-red-700 transition-colors"
+                  onClick={() => {
+                    deleteBook(_id);
+                  }}
+                >
+                  Delete Book
+                </button>
+              </div>
             </div>
           </div>
           <span className="absolute bottom-2 right-4">
