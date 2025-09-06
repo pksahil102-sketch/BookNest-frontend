@@ -1,8 +1,8 @@
-import {Library} from "lucide-react";
-import {Link} from "react-router";
+import { Library } from "lucide-react";
+import { Link } from "react-router";
 import BookCard from "../components/BookCard";
 import axios from "axios";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 const HomePage = () => {
   const [recentBooks, setRecentBooks] = useState([]);
@@ -18,7 +18,9 @@ const HomePage = () => {
     async function getRecentBooks() {
       try {
         setIsLoading(true);
-        const response = await axios.get("https://booknest-backend-2hlf.onrender.com/api/v1/books");
+        const response = await axios.get(
+          "https://booknest-backend-i5ev.onrender.com/api/v1/books"
+        );
         setRecentBooks(response.data);
         calculateStats(response.data);
       } catch (error) {
@@ -39,12 +41,12 @@ const HomePage = () => {
 
     const reading = booksData.filter((b) => b.status === "Reading").length;
 
-    setStats({total, completed, toBeRead, reading});
+    setStats({ total, completed, toBeRead, reading });
   };
 
   const handleStatusChange = (bookId, newStatus) => {
     const updatedBooks = recentBooks.map((b) =>
-      b._id === bookId ? {...b, status: newStatus} : b
+      b._id === bookId ? { ...b, status: newStatus } : b
     );
     setRecentBooks(updatedBooks);
     calculateStats(updatedBooks); // updates total/read/to be read

@@ -1,10 +1,10 @@
-import {Link} from "react-router";
+import { Link } from "react-router";
 import Dropdown from "./Dropdown";
 import axios from "axios";
-import {useState, useEffect} from "react";
-import {toast} from "react-toastify";
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
-const BookCard = ({book, onStatusChange}) => {
+const BookCard = ({ book, onStatusChange }) => {
   const [status, setStatus] = useState(book.status || "To Read");
 
   // if parent updates book.status, keep in sync
@@ -15,7 +15,7 @@ const BookCard = ({book, onStatusChange}) => {
   const handleChange = async (newStatus) => {
     try {
       await axios.patch(
-        `https://booknest-backend-2hlf.onrender.com/api/v1/books/${book._id}/status`,
+        `https://booknest-backend-i5ev.onrender.com/api/v1/books/${book._id}/status`,
         {
           status: newStatus,
         }
@@ -36,7 +36,7 @@ const BookCard = ({book, onStatusChange}) => {
     <article className="w-full h-auto bg-[#afcce3] text-gray-950 p-6 hover:shadow-lg transition-shadow rounded-lg">
       <Link to={`/books/${book._id}`}>
         <img
-          src={`https://booknest-backend-2hlf.onrender.com${book.image}`}
+          src={`https://booknest-backend-i5ev.onrender.com${book.image}`}
           alt={book.title}
           className="w-32 h-48 rounded-md object-cover shadow sm:w-full sm:h-auto"
         />

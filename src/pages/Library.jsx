@@ -1,8 +1,8 @@
 import BookCard from "../components/BookCard";
-import {LibraryBigIcon} from "lucide-react";
-import {useEffect, useState} from "react";
+import { LibraryBigIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import {Link} from "react-router";
+import { Link } from "react-router";
 
 const Library = () => {
   const [allBooks, setAllBooks] = useState([]);
@@ -12,7 +12,9 @@ const Library = () => {
     async function fetchAllBooks() {
       try {
         setIsLoading(true);
-        const response = await axios.get("https://booknest-backend-2hlf.onrender.com/api/v1/books");
+        const response = await axios.get(
+          "https://booknest-backend-i5ev.onrender.com/api/v1/books"
+        );
         setAllBooks(response.data);
       } catch (error) {
         console.log(error.message);

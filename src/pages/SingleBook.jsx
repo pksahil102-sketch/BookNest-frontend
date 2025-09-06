@@ -1,14 +1,14 @@
-import {LibraryBigIcon} from "lucide-react";
-import {useEffect, useState} from "react";
-import {useParams, useNavigate, Link} from "react-router";
+import { LibraryBigIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate, Link } from "react-router";
 import axios from "axios";
-import {ArrowLeft} from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Dropdown from "../components/Dropdown";
 import NotesSection from "../components/NotesSection";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 const SingleBook = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const [book, setBook] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("To Read");
@@ -17,12 +17,12 @@ const SingleBook = () => {
     setStatus(newStatus);
     try {
       await axios.patch(
-        `https://booknest-backend-2hlf.onrender.com/api/v1/books/${book._id}/status`,
-        {status: newStatus}
+        `https://booknest-backend-i5ev.onrender.com/api/v1/books/${book._id}/status`,
+        { status: newStatus }
       );
 
       // update book object in state too
-      setBook((prev) => ({...prev, status: newStatus}));
+      setBook((prev) => ({ ...prev, status: newStatus }));
 
       toast("Status Updated Successfully!");
     } catch (error) {
@@ -44,7 +44,7 @@ const SingleBook = () => {
         try {
           setIsLoading(true);
           const response = await axios.get(
-            `https://booknest-backend-2hlf.onrender.com/api/v1/books/${id}`
+            `https://booknest-backend-i5ev.onrender.com/api/v1/books/${id}`
           );
           setBook(response.data);
           setStatus(response.data.status || "Status");
@@ -72,7 +72,7 @@ const SingleBook = () => {
   async function deleteBook(id) {
     try {
       await axios.delete(
-        `https://booknest-backend-2hlf.onrender.com/api/v1/books/${id}`
+        `https://booknest-backend-i5ev.onrender.com/api/v1/books/${id}`
       );
       navigate("/library");
       toast("Book deleted successfully");
@@ -98,7 +98,7 @@ const SingleBook = () => {
       </div>
     );
   }
-  const {title, _id, author, genre, createdAt} = book;
+  const { title, _id, author, genre, createdAt } = book;
   return (
     <main className="space-y-4">
       {/* Notes section */}
@@ -119,7 +119,7 @@ const SingleBook = () => {
 
             {book.image && (
               <img
-                src={`https://booknest-backend-2hlf.onrender.com${book.image}`}
+                src={`https://booknest-backend-i5ev.onrender.com${book.image}`}
                 alt={title}
                 className="w-full max-h-96 object-contain  rounded-lg mb-6"
               />

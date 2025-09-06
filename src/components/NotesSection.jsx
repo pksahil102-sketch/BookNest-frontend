@@ -1,7 +1,7 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
-const NotesSection = ({bookId}) => {
+const NotesSection = ({ bookId }) => {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState("");
 
@@ -11,7 +11,7 @@ const NotesSection = ({bookId}) => {
 
   const fetchNotes = async () => {
     const res = await axios.get(
-      `https://booknest-backend-2hlf.onrender.com/notes/${bookId}`
+      `https://booknest-backend-i5ev.onrender.com/notes/${bookId}`
     );
     setNotes(res.data);
   };
@@ -19,8 +19,8 @@ const NotesSection = ({bookId}) => {
   const addNote = async () => {
     if (!newNote.trim()) return;
     await axios.post(
-      `https://booknest-backend-2hlf.onrender.com/notes/${bookId}`,
-      {content: newNote}
+      `https://booknest-backend-i5ev.onrender.com/notes/${bookId}`,
+      { content: newNote }
     );
     setNewNote("");
     fetchNotes();
@@ -28,7 +28,7 @@ const NotesSection = ({bookId}) => {
 
   const deleteNote = async (id) => {
     await axios.delete(
-      `https://booknest-backend-2hlf.onrender.com/notes/${id}`
+      `https://booknest-backend-i5ev.onrender.com/notes/${id}`
     );
     fetchNotes();
   };

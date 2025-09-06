@@ -1,8 +1,8 @@
-import {BookHeart} from "lucide-react";
-import {useState} from "react";
+import { BookHeart } from "lucide-react";
+import { useState } from "react";
 import axios from "axios";
-import {useNavigate} from "react-router";
-import {toast} from "react-toastify";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const AddBook = () => {
   const [title, setTitle] = useState("");
@@ -28,9 +28,13 @@ const AddBook = () => {
         formData.append("image", cover); // MUST match backend field name
       }
 
-      await axios.post("https://booknest-backend-2hlf.onrender.com/api/v1/books", formData, {
-        headers: {"Content-Type": "multipart/form-data"},
-      });
+      await axios.post(
+        "https://booknest-backend-i5ev.onrender.com/api/v1/books",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
 
       navigate("/library");
       toast("New Book Added ");
